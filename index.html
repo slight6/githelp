@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <title>git repos from scratch</title>
+  </head>
+  <body>
+    <h1>This will add local and remote repos through a few simple steps</h1>
+<div class="git">
+    <ol>
+
+
+      <li>
+        Initialize the local git repo
+      </li>
+      <div class="code">
+        $git init
+      </div>
+      <li>
+        Then check the remote repo for the alias origin, if not create it in git first
+      </li>
+      <div class="code">
+        $git ls-remote https://github.com/repo-owner/repo-name.git/
+      </div>
+      If it does exist, associate it with the remote alias "origin":
+      <div class="code">
+        $git remote add origin https://github.com:/repo-owner/repo-name.git
+      </div>
+      <li>
+        Check the remote alias for "origin" :
+      </li>
+      <div class="code">
+        $git remote -v
+      </div>
+      This should display : <br>
+      origin  https://github.com:/repo-owner/repo-name.git (fetch) <br>
+      origin  https://github.com:/repo-owner/repo-name.git (push) <br>
+      <li>
+        Verify if your alias origin is set properly
+      </li>
+      <div class="code">
+        $cat ./.git/config <br>
+        : <br>
+        [remote "origin"] <br>
+        url = https://github.com:/repo-owner/repo-name.git <br>
+        fetch = +refs/heads/*:refs/remotes/origin/* <br>
+      </div>
+      <li>
+        Pull any contents from remote repo
+      </li>
+      <div class="code">
+        $git pull origin main
+      </div>
+      <li>
+        Check the main or master branch
+      </li>
+      <div class="code">
+        $git branch
+      </div>
+      Should show *main or *master
+      <li>
+        Change the origin name to differentiate from other repos
+      </li>
+      <div class="code">
+        $git remote remane origin 'enter a name here'
+      </div>
+      <li>
+        Wrap it up with a bow
+      </li>
+      <div class="code">
+        $git add . <br>
+        $git status <br>
+        $git commit -m 'MAKE SURE TO DO THIS OR THAT STUPID VI WILL POP UP!' <br>
+        $git status <br>
+        $git push origin main <br>
+
+
+
+      </div>
+
+
+    </ol>
+
+    <div class="copied">
+      <hr><hr><hr>
+
+
+  The following steps work for me:
+
+  Init
+  First, initialize the repository to work with Git, so that any file changes are tracked:
+
+  git init
+  Create alias origin
+  Then, check that the remote repository that you want to associate with the alias origin exists, if not, create it in git first.
+
+  $ git ls-remote https://github.com/repo-owner/repo-name.git/
+  If it exists, associate it with the remote alias "origin":
+
+  git remote add origin https://github.com:/repo-owner/repo-name.git
+  and check to which URL, the remote alias "origin" belongs to by using git remote -v:
+
+  $ git remote -v
+  origin  https://github.com:/repo-owner/repo-name.git (fetch)
+  origin  https://github.com:/repo-owner/repo-name.git (push)
+
+  Verify alias origin
+  Next, verify if your alias origin is properly aliased as follows:
+
+  $ cat ./.git/config
+  :
+  [remote "origin"]
+          url = https://github.com:/repo-owner/repo-name.git
+          fetch = +refs/heads/*:refs/remotes/origin/*
+  :
+  You must see this section [remote "origin"]. You can consider to use GitHub Desktop available for both Windows and MacOS, which help me to automatically populate the missing section/s in ~./git/config file OR you can manually add it, not great, but hey it works!
+
+  Pull any contents from remote main branch
+  $ git pull origin main
+  This will pull any contents you have on the repository you just aliased to origin to the local repository, including .gitignore, creating the branch main in the process.
+
+
+  Check main branch
+  $ git branch
+  * main
+  This will show you that main branch has been created and you are now on it.
+
+  Optional
+  You might also want to change the origin alias to make it more intuitive, especially if you are working with multiple origin:
+
+  git remote rename origin my-super-git-repo
+  Finally
+  git add .
+  git status //If you want to check what's going to be committed
+  git commit -m 'First commit' //-m is for message
+  git push origin main
+
+
+
+
+  git branch -M main
+
+
+
+
+
+
+  echo "# slight6" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin https://github.com/slight6/slight6.git
+  git push -u origin main
+
+  git remote add origin https://github.com/slight6/slight6.git
+  git branch -M main
+  git push -u origin main
+
+
+
+      <hr><hr><hr>
+    </div>
+
+</div>
+
+  </body>
+</html>
